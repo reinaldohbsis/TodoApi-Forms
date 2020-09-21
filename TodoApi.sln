@@ -5,11 +5,9 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.API", "TodoApi\Todo.API.csproj", "{6A3B8EE4-0A25-45F8-B06C-4F184711EAC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Forms", "Todo.Forms\Todo.Forms.csproj", "{D8A53C11-70B2-4BA6-A7D9-9EE21FF98FF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Models", "Todo.Models\Todo.Models.csproj", "{8BD9C41C-5CBF-4B68-9223-1E3CC48257C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Models", "Todo.Models\Todo.Models.csproj", "{8BD9C41C-5CBF-4B68-9223-1E3CC48257C0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Formms", "Todo.Formms\Todo.Formms.csproj", "{767624EA-4D60-4114-B13A-BEAA7C32CC07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Formms", "Todo.Formms\Todo.Formms.csproj", "{767624EA-4D60-4114-B13A-BEAA7C32CC07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		{6A3B8EE4-0A25-45F8-B06C-4F184711EAC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A3B8EE4-0A25-45F8-B06C-4F184711EAC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A3B8EE4-0A25-45F8-B06C-4F184711EAC1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8A53C11-70B2-4BA6-A7D9-9EE21FF98FF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8A53C11-70B2-4BA6-A7D9-9EE21FF98FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8A53C11-70B2-4BA6-A7D9-9EE21FF98FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8A53C11-70B2-4BA6-A7D9-9EE21FF98FF5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8BD9C41C-5CBF-4B68-9223-1E3CC48257C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8BD9C41C-5CBF-4B68-9223-1E3CC48257C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BD9C41C-5CBF-4B68-9223-1E3CC48257C0}.Release|Any CPU.ActiveCfg = Release|Any CPU

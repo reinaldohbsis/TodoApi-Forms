@@ -28,25 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lst_tarefas = new System.Windows.Forms.ListBox();
+            this.box = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
-            // lst_tarefas
+            // box
             // 
-            this.lst_tarefas.FormattingEnabled = true;
-            this.lst_tarefas.ItemHeight = 25;
-            this.lst_tarefas.Location = new System.Drawing.Point(13, 13);
-            this.lst_tarefas.Name = "lst_tarefas";
-            this.lst_tarefas.Size = new System.Drawing.Size(453, 429);
-            this.lst_tarefas.TabIndex = 0;
-            this.lst_tarefas.SelectedIndexChanged += new System.EventHandler(this.lst_tarefas_SelectedIndexChanged);
+            this.box.FormattingEnabled = true;
+            this.box.Location = new System.Drawing.Point(13, 13);
+            this.box.Name = "box";
+            this.box.Size = new System.Drawing.Size(453, 368);
+            this.box.TabIndex = 0;
+            this.box.SelectedIndexChanged += new System.EventHandler(this.box_SelectedIndexChanged);
             // 
             // Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 744);
-            this.Controls.Add(this.lst_tarefas);
+            this.Controls.Add(this.box);
             this.Name = "Usuario";
             this.Text = "Usuario";
             this.Load += new System.EventHandler(this.Usuario_Load);
@@ -56,6 +55,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lst_tarefas;
+        private System.Windows.Forms.CheckedListBox box;
     }
 }
