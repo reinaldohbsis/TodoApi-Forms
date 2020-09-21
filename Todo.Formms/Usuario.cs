@@ -44,6 +44,7 @@ namespace Todo.Formms
             foreach (var item in data)
             {
                 list.Add(item);
+
                 box.Items.Add(item.Nome, CheckState.Unchecked);
             }
 
