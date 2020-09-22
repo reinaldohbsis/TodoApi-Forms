@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExibirTarefa));
-            this.lst_descricao = new System.Windows.Forms.ListBox();
             this.txt_nome = new System.Windows.Forms.TextBox();
             this.date_data = new System.Windows.Forms.DateTimePicker();
             this.lbl_situacao = new System.Windows.Forms.Label();
@@ -37,16 +36,8 @@
             this.btn_excluir = new System.Windows.Forms.Button();
             this.btn_voltar = new System.Windows.Forms.Button();
             this.cb_situacao = new System.Windows.Forms.ComboBox();
+            this.txtbox_grande = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
-            // 
-            // lst_descricao
-            // 
-            this.lst_descricao.FormattingEnabled = true;
-            this.lst_descricao.ItemHeight = 25;
-            this.lst_descricao.Location = new System.Drawing.Point(12, 66);
-            this.lst_descricao.Name = "lst_descricao";
-            this.lst_descricao.Size = new System.Drawing.Size(444, 379);
-            this.lst_descricao.TabIndex = 0;
             // 
             // txt_nome
             // 
@@ -117,12 +108,21 @@
             this.cb_situacao.Size = new System.Drawing.Size(182, 33);
             this.cb_situacao.TabIndex = 5;
             // 
+            // txtbox_grande
+            // 
+            this.txtbox_grande.Location = new System.Drawing.Point(12, 66);
+            this.txtbox_grande.Name = "txtbox_grande";
+            this.txtbox_grande.Size = new System.Drawing.Size(444, 380);
+            this.txtbox_grande.TabIndex = 6;
+            this.txtbox_grande.Text = "";
+            // 
             // ExibirTarefa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(478, 744);
+            this.Controls.Add(this.txtbox_grande);
             this.Controls.Add(this.cb_situacao);
             this.Controls.Add(this.btn_voltar);
             this.Controls.Add(this.btn_excluir);
@@ -130,7 +130,6 @@
             this.Controls.Add(this.lbl_situacao);
             this.Controls.Add(this.date_data);
             this.Controls.Add(this.txt_nome);
-            this.Controls.Add(this.lst_descricao);
             this.Name = "ExibirTarefa";
             this.Text = "ExibirTarefa";
             this.Load += new System.EventHandler(this.ExibirTarefa_Load);
@@ -140,8 +139,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox lst_descricao;
         private System.Windows.Forms.TextBox txt_nome;
         private System.Windows.Forms.DateTimePicker date_data;
         private System.Windows.Forms.Label lbl_situacao;
@@ -149,5 +146,6 @@
         private System.Windows.Forms.Button btn_excluir;
         private System.Windows.Forms.Button btn_voltar;
         private System.Windows.Forms.ComboBox cb_situacao;
+        private System.Windows.Forms.RichTextBox txtbox_grande;
     }
 }

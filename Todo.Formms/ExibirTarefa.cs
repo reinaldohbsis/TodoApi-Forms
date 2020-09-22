@@ -25,7 +25,7 @@ namespace Todo.Formms
         private void ExibirTarefa_Load(object sender, EventArgs e)
         {
             txt_nome.Text = _tarefa.Nome;
-            lst_descricao.Items.Add(_tarefa.Descricao);
+            txtbox_grande.Text = _tarefa.Descricao;
             if (_tarefa.Status)
             {
                 
@@ -46,7 +46,7 @@ namespace Todo.Formms
 
         private void btn_voltar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Visible = false;
             new Usuario(Convert.ToInt32(_tarefa.IdPessoa)).ShowDialog();
         }
 
@@ -82,7 +82,7 @@ namespace Todo.Formms
             var tarefa = new Tarefa()
             {
                 Nome = txt_nome.Text,
-                Descricao = lst_descricao.Items.ToString(),
+                Descricao = txtbox_grande.Text,
                 Data = date_data.Value,
                 Status = (cb_situacao.Text == "Aberto") ? false : true,
                 Id = _tarefa.Id,
