@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExibirTarefa));
             this.lst_descricao = new System.Windows.Forms.ListBox();
             this.txt_nome = new System.Windows.Forms.TextBox();
             this.date_data = new System.Windows.Forms.DateTimePicker();
@@ -64,38 +65,48 @@
             // lbl_situacao
             // 
             this.lbl_situacao.AutoSize = true;
-            this.lbl_situacao.Location = new System.Drawing.Point(180, 473);
+            this.lbl_situacao.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_situacao.Font = new System.Drawing.Font("Bahnschrift", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_situacao.Location = new System.Drawing.Point(170, 474);
             this.lbl_situacao.Name = "lbl_situacao";
-            this.lbl_situacao.Size = new System.Drawing.Size(88, 25);
+            this.lbl_situacao.Size = new System.Drawing.Size(98, 24);
             this.lbl_situacao.TabIndex = 3;
             this.lbl_situacao.Text = "Situação: ";
             // 
             // btn_atualizar
             // 
+            this.btn_atualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btn_atualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_atualizar.Location = new System.Drawing.Point(12, 581);
             this.btn_atualizar.Name = "btn_atualizar";
             this.btn_atualizar.Size = new System.Drawing.Size(444, 34);
             this.btn_atualizar.TabIndex = 4;
             this.btn_atualizar.Text = "Atualizar";
-            this.btn_atualizar.UseVisualStyleBackColor = true;
+            this.btn_atualizar.UseVisualStyleBackColor = false;
+            this.btn_atualizar.Click += new System.EventHandler(this.btn_atualizar_Click);
             // 
             // btn_excluir
             // 
+            this.btn_excluir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btn_excluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_excluir.Location = new System.Drawing.Point(12, 630);
             this.btn_excluir.Name = "btn_excluir";
             this.btn_excluir.Size = new System.Drawing.Size(444, 34);
             this.btn_excluir.TabIndex = 4;
             this.btn_excluir.Text = "Excluir";
-            this.btn_excluir.UseVisualStyleBackColor = true;
+            this.btn_excluir.UseVisualStyleBackColor = false;
+            this.btn_excluir.Click += new System.EventHandler(this.btn_excluir_Click);
             // 
             // btn_voltar
             // 
+            this.btn_voltar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btn_voltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_voltar.Location = new System.Drawing.Point(12, 698);
             this.btn_voltar.Name = "btn_voltar";
             this.btn_voltar.Size = new System.Drawing.Size(444, 34);
             this.btn_voltar.TabIndex = 4;
             this.btn_voltar.Text = "Voltar";
-            this.btn_voltar.UseVisualStyleBackColor = true;
+            this.btn_voltar.UseVisualStyleBackColor = false;
             this.btn_voltar.Click += new System.EventHandler(this.btn_voltar_Click);
             // 
             // cb_situacao
@@ -110,6 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(478, 744);
             this.Controls.Add(this.cb_situacao);
             this.Controls.Add(this.btn_voltar);

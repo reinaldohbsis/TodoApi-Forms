@@ -43,5 +43,11 @@ namespace Todo.Formms
             this.Visible = false;
             new Usuario(_id).ShowDialog();
         }
+
+        private void btn_voltar_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            new Usuario(_id).ShowDialog();
+        }
     }
 }

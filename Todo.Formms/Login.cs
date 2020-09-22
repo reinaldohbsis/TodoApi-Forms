@@ -39,8 +39,8 @@ namespace Todo.Formms
             result.Wait();
 
             var data = JsonConvert.DeserializeObject<List<Pessoa>>(result.Result);
-           // var rep = new List<Atual>();
-
+            // var rep = new List<Atual>();
+            bool teste = true;
             foreach(var log in data)
             {
                 if (log.Usuario == txt_user.Text)
@@ -51,6 +51,7 @@ namespace Todo.Formms
                         
                         this.Visible = false;
                         new Usuario(Convert.ToInt32(log.Id)).ShowDialog();
+                        teste = false;
                     }
                     else
                     {
@@ -59,7 +60,14 @@ namespace Todo.Formms
                     }
                 }
             }
+            if (teste)
+            MessageBox.Show("Usuário não encontrado");
 
+
+        }
+
+        private void btn_cadastrar_Click(object sender, EventArgs e)
+        {
 
         }
     }

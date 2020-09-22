@@ -34,16 +34,15 @@
             this.btn_sair = new System.Windows.Forms.Button();
             this.btn_novo = new System.Windows.Forms.Button();
             this.lst_lista = new System.Windows.Forms.ListBox();
-            this.txt_id = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btn_abrir
             // 
             this.btn_abrir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btn_abrir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_abrir.Location = new System.Drawing.Point(114, 501);
+            this.btn_abrir.Location = new System.Drawing.Point(12, 501);
             this.btn_abrir.Name = "btn_abrir";
-            this.btn_abrir.Size = new System.Drawing.Size(352, 41);
+            this.btn_abrir.Size = new System.Drawing.Size(454, 41);
             this.btn_abrir.TabIndex = 1;
             this.btn_abrir.Text = "Abrir";
             this.btn_abrir.UseVisualStyleBackColor = false;
@@ -59,6 +58,7 @@
             this.btn_excluir.TabIndex = 1;
             this.btn_excluir.Text = "Excluir";
             this.btn_excluir.UseVisualStyleBackColor = false;
+            this.btn_excluir.Click += new System.EventHandler(this.btn_excluir_Click);
             // 
             // btn_sair
             // 
@@ -93,31 +93,22 @@
             this.lst_lista.Size = new System.Drawing.Size(453, 404);
             this.lst_lista.TabIndex = 2;
             // 
-            // txt_id
-            // 
-            this.txt_id.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_id.Location = new System.Drawing.Point(13, 501);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(86, 39);
-            this.txt_id.TabIndex = 3;
-            // 
             // Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(478, 744);
-            this.Controls.Add(this.txt_id);
             this.Controls.Add(this.lst_lista);
             this.Controls.Add(this.btn_novo);
             this.Controls.Add(this.btn_sair);
             this.Controls.Add(this.btn_excluir);
             this.Controls.Add(this.btn_abrir);
             this.Name = "Usuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario";
             this.Load += new System.EventHandler(this.Usuario_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -127,6 +118,5 @@
         private System.Windows.Forms.Button btn_sair;
         private System.Windows.Forms.Button btn_novo;
         private System.Windows.Forms.ListBox lst_lista;
-        private System.Windows.Forms.TextBox txt_id;
     }
 }

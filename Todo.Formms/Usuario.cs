@@ -30,28 +30,8 @@ namespace Todo.Formms
 
         public void Usuario_Load(object sender, EventArgs e)
         {
-            //box.Items.Add("JORJE", CheckState.Unchecked);
-
-            var httpClient = new HttpClient();
-            var URL = "https://localhost:44336/api/Pessoas/" + _id;
-            var resultClient = httpClient.GetAsync(URL);
-            resultClient.Wait();
-            var result = resultClient.Result.Content.ReadAsStringAsync();
-            result.Wait();
-
-            var data = JsonConvert.DeserializeObject<List<Tarefa>>(result.Result);
-            //List<Tarefa> list = new List<Tarefa>();
-            //int c = 0;
-
-            foreach (var item in data)
-            {
-                //list.Add(item);
-
-                _tarefa.Add(item);
-                lst_lista.Items.Add($"{item.Id} | {item.Nome} | {item.Status}");
-            }
-
-            //lst_tarefas.Text += list;
+            Get();
+            
         }
 
         private void box_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,15 +41,18 @@ namespace Todo.Formms
 
         private void btn_abrir_Click(object sender, EventArgs e)
         {
-
+            int idselecionado = Convert.ToInt32(Selecionar());
+            //txt_id.Text = Selecionar();
             foreach (var item in _tarefa)
             {
-                if (item.Id.ToString() == txt_id.Text)
+                if (item.Id.ToString() == idselecionado.ToString())
                 {
-                    new ExibirTarefa(_tarefa[Convert.ToInt32(item.Id) - 1]).ShowDialog();
+                    var tarefa = _tarefa.Where(x => x.Id == item.Id).FirstOrDefault();
+                    this.Visible = false;
+                    new ExibirTarefa(tarefa).ShowDialog();
                 }
             }
-
+                        
         }
 
         private void btn_sair_Click(object sender, EventArgs e)
@@ -83,6 +66,56 @@ namespace Todo.Formms
             this.Visible = false;
             new Novo(_id).ShowDialog();
             
+        }
+
+        private void btn_excluir_Click(object sender, EventArgs e)
+        {
+            int idselecao = Convert.ToInt32(Selecionar());
+
+            var tarefa = new Tarefa()
+            {
+                Id = idselecao
+            };
+
+            var httpClient = new HttpClient();
+            var URL = "https://localhost:44336/api/TodoItems/" + idselecao;
+            var resultClient = httpClient.DeleteAsync(URL);
+            resultClient.Wait();
+
+            var result = resultClient.Result.Content.ReadAsStringAsync();
+            result.Wait();
+            
+            Get();
+
+        }
+
+        public string Selecionar()
+        {
+            string selecao = lst_lista.SelectedItem.ToString().Substring(0, lst_lista.SelectedItem.ToString().IndexOf('|'));
+            return selecao;
+        }
+
+        public void Get()
+        {
+            lst_lista.Items.Clear();
+            var httpClient = new HttpClient();
+            var URL = "https://localhost:44336/api/Pessoas/" + _id;
+            var resultClient = httpClient.GetAsync(URL);
+            resultClient.Wait();
+            var result = resultClient.Result.Content.ReadAsStringAsync();
+            result.Wait();
+
+            var data = JsonConvert.DeserializeObject<List<Tarefa>>(result.Result);
+
+
+            lst_lista.Items.Add("ID | NOME                                    | STATUS");
+            foreach (var item in data)
+            {
+                _tarefa.Remove(item);
+                _tarefa.Add(item);
+                lst_lista.Items.Add($"{item.Id}  | {item.Nome}                | {item.Status}");
+            }
+
         }
     }
 }
