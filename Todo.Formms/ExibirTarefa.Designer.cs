@@ -96,6 +96,7 @@
             this.btn_voltar.TabIndex = 4;
             this.btn_voltar.Text = "Voltar";
             this.btn_voltar.UseVisualStyleBackColor = true;
+            this.btn_voltar.Click += new System.EventHandler(this.btn_voltar_Click);
             // 
             // cb_situacao
             // 

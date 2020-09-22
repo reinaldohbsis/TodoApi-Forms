@@ -39,7 +39,7 @@ namespace Todo.Formms
             result.Wait();
 
             var data = JsonConvert.DeserializeObject<List<Pessoa>>(result.Result);
-            var rep = new List<Atual>();
+           // var rep = new List<Atual>();
 
             foreach(var log in data)
             {
