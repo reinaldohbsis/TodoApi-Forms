@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Todo.API.Models;
 
@@ -72,10 +73,10 @@ namespace Todo.Formms
         {
             int idselecao = Convert.ToInt32(Selecionar());
 
-            var tarefa = new Tarefa()
-            {
-                Id = idselecao
-            };
+            //var tarefa = new Tarefa()
+            //{
+            //    Id = idselecao
+            //};
 
             var httpClient = new HttpClient();
             var URL = "https://localhost:44336/api/TodoItems/" + idselecao;
@@ -108,12 +109,13 @@ namespace Todo.Formms
             var data = JsonConvert.DeserializeObject<List<Tarefa>>(result.Result);
 
 
-            lst_lista.Items.Add("ID | NOME                                    | STATUS");
+            //lst_lista.Items.Add("ID  | \t NOME |\t STATUS");
             foreach (var item in data)
             {
                 _tarefa.Remove(item);
                 _tarefa.Add(item);
-                lst_lista.Items.Add($"{item.Id}  | {item.Nome}                | {item.Status}");
+                string txtt = String.Format("{0,-5} {1,-40} \t {2} \n",item.Id,item.Nome,item.Status);                
+               lst_lista.Items.Add(txtt);
             }
 
         }
