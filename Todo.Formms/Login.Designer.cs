@@ -32,9 +32,9 @@
             this.txt_senha = new System.Windows.Forms.TextBox();
             this.txt_user = new System.Windows.Forms.TextBox();
             this.btn_login = new System.Windows.Forms.Button();
-            this.btn_cadastrar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btn_cadastro = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txt_senha
@@ -66,18 +66,6 @@
             this.btn_login.UseVisualStyleBackColor = false;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
-            // btn_cadastrar
-            // 
-            this.btn_cadastrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btn_cadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cadastrar.Location = new System.Drawing.Point(12, 642);
-            this.btn_cadastrar.Name = "btn_cadastrar";
-            this.btn_cadastrar.Size = new System.Drawing.Size(454, 34);
-            this.btn_cadastrar.TabIndex = 1;
-            this.btn_cadastrar.Text = "Cadastrar";
-            this.btn_cadastrar.UseVisualStyleBackColor = false;
-            this.btn_cadastrar.Click += new System.EventHandler(this.btn_login_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -104,6 +92,18 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Senha";
             // 
+            // btn_cadastro
+            // 
+            this.btn_cadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btn_cadastro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cadastro.Location = new System.Drawing.Point(12, 644);
+            this.btn_cadastro.Name = "btn_cadastro";
+            this.btn_cadastro.Size = new System.Drawing.Size(454, 34);
+            this.btn_cadastro.TabIndex = 3;
+            this.btn_cadastro.Text = "Cadastrar";
+            this.btn_cadastro.UseVisualStyleBackColor = false;
+            this.btn_cadastro.Click += new System.EventHandler(this.btn_cadastro_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -111,9 +111,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(478, 744);
+            this.Controls.Add(this.btn_cadastro);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btn_cadastrar);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.txt_user);
             this.Controls.Add(this.txt_senha);
@@ -131,8 +131,8 @@
         private System.Windows.Forms.TextBox txt_senha;
         private System.Windows.Forms.TextBox txt_user;
         private System.Windows.Forms.Button btn_login;
-        private System.Windows.Forms.Button btn_cadastrar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_cadastro;
     }
 }

@@ -66,9 +66,10 @@ namespace Todo.Formms
 
         }
 
-        private void btn_cadastrar_Click(object sender, EventArgs e)
+        private void btn_cadastro_Click(object sender, EventArgs e)
         {
-
+            this.Visible = false;
+            new CadastroPessoa().ShowDialog();
         }
     }
 }
