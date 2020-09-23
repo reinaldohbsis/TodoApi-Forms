@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
 using Todo.API.Models;
+using Validadores;
 
 namespace Todo.Formms
 {
@@ -41,7 +42,6 @@ namespace Todo.Formms
             }
             date_data.Value = _tarefa.Data;
 
-
         }
 
         private void btn_voltar_Click(object sender, EventArgs e)
@@ -53,57 +53,43 @@ namespace Todo.Formms
         private void btn_excluir_Click(object sender, EventArgs e)
         {
             
-            var tarefa = new Tarefa()
-            {
-                Id = idselecao
-            };
-
             var dialog = MessageBox.Show("Deseja excluir?", "Excluir", MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
 
             if (dialog == DialogResult.Yes)
             {
-                var httpClient = new HttpClient();
-                var URL = "https://localhost:44336/api/TodoItems/" + idselecao;
-                var resultClient = httpClient.DeleteAsync(URL);
-                resultClient.Wait();
+                
+                bool result = ValidadoresTarefa.ExcluirTarefa(idselecao);
 
-                var result = resultClient.Result.Content.ReadAsStringAsync();
-                result.Wait();
+                if (result)
+                {
+                    this.Visible = false;
+                    new Usuario(Convert.ToInt32(_tarefa.IdPessoa)).ShowDialog();
+                }
 
-                this.Visible = false;
-                new Usuario(Convert.ToInt32(_tarefa.IdPessoa)).ShowDialog();
+                else
+                {
+                    MessageBox.Show("Hmmm, aparentemente o valor da tarefa é nulo");
+                }
             }
-
-
         }
 
         private void btn_atualizar_Click(object sender, EventArgs e)
         {
-            var tarefa = new Tarefa()
-            {
-                Nome = txt_nome.Text,
-                Descricao = txtbox_grande.Text,
-                Data = date_data.Value,
-                Status = (cb_situacao.Text == "Aberto") ? false : true,
-                Id = _tarefa.Id,
-                IdPessoa = _tarefa.IdPessoa
-            };
             
+            bool result = ValidadoresTarefa.ValidadorAtualizar(txt_nome.Text,txtbox_grande.Text,date_data.Value,_tarefa.IdPessoa,_tarefa.Id,cb_situacao.Text);
             var dialog = MessageBox.Show("Deseja atualizar?", "Atualizar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
             if (dialog == DialogResult.Yes)
-            {
-                var content = JsonConvert.SerializeObject(tarefa);
-                var httpClient = new HttpClient();
-                var URL = "https://localhost:44336/api/TodoItems/" + idselecao;
-                var resultClient = httpClient.PutAsync(URL, new StringContent(content, Encoding.UTF8, "application/json"));
-                resultClient.Wait();
-
-                var result = resultClient.Result.Content.ReadAsStringAsync();
-                result.Wait();
-
-                this.Visible = false;
-                new Usuario(Convert.ToInt32(_tarefa.IdPessoa)).ShowDialog();
+            {              
+                if (result)
+                {
+                    this.Visible = false;
+                    new Usuario(Convert.ToInt32(_tarefa.IdPessoa)).ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Errar é humano, mas olha...\n\nNão consigo atualizar assim não, sinto muito");
+                }
             }
 
         }

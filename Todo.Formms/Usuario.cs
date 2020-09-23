@@ -74,23 +74,20 @@ namespace Todo.Formms
 
         private void btn_excluir_Click(object sender, EventArgs e)
         {
-            int idselecao = Convert.ToInt32(Selecionar());
+            var dialog = MessageBox.Show("Deseja excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
-            //var tarefa = new Tarefa()
-            //{
-            //    Id = idselecao
-            //};
-            if (idselecao != 0)
+            if (dialog == DialogResult.Yes)
             {
-                var httpClient = new HttpClient();
-                var URL = "https://localhost:44336/api/TodoItems/" + idselecao;
-                var resultClient = httpClient.DeleteAsync(URL);
-                resultClient.Wait();
+                int idselecao = Convert.ToInt32(Selecionar());
 
-                var result = resultClient.Result.Content.ReadAsStringAsync();
-                result.Wait();
-
-                Get();
+                if (idselecao != 0)
+                {
+                    bool result = Validadores.ValidadoresTarefa.ExcluirTarefa(idselecao);
+                    if (result)
+                        Get();
+                    else
+                        MessageBox.Show("Algo de errado não está certo, cabeça de vento");
+                }
             }
 
         }
