@@ -118,6 +118,7 @@
             this.Controls.Add(this.txt_user);
             this.Controls.Add(this.txt_senha);
             this.Name = "Login";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);

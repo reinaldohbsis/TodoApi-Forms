@@ -29,41 +29,48 @@ namespace Todo.Formms
             user = new Atual();
             user.User = txt_user.Text;
             user.Senha = txt_user.Text;
-
-            var httpClient = new HttpClient();
-            var URL = "https://localhost:44336/api/Pessoas";
-            var resultRequest = httpClient.GetAsync(URL);
-            resultRequest.Wait();
-
-            var result = resultRequest.Result.Content.ReadAsStringAsync();
-            result.Wait();
-
-            var data = JsonConvert.DeserializeObject<List<Pessoa>>(result.Result);
-            // var rep = new List<Atual>();
-            bool teste = true;
-            foreach(var log in data)
+            if (txt_user.Text != "" && txt_senha.Text != "")
             {
-                if (log.Usuario == txt_user.Text)
+                var httpClient = new HttpClient();
+                var URL = "https://localhost:44336/api/Pessoas";
+                var resultRequest = httpClient.GetAsync(URL);
+                resultRequest.Wait();
+
+                var result = resultRequest.Result.Content.ReadAsStringAsync();
+                result.Wait();
+
+                var data = JsonConvert.DeserializeObject<List<Pessoa>>(result.Result);
+                // var rep = new List<Atual>();
+                bool teste = true;
+                foreach (var log in data)
                 {
-                    if (log.Senha == txt_senha.Text)
+                    if (log.Usuario == txt_user.Text)
                     {
-                        
-                        
-                        this.Visible = false;
-                        new Usuario(Convert.ToInt32(log.Id)).ShowDialog();
                         teste = false;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Senha Incorreta");
-                        txt_senha.Text = "";
+                        if (log.Senha == txt_senha.Text)
+                        {
+
+
+                            this.Visible = false;
+                            new Usuario(Convert.ToInt32(log.Id)).ShowDialog();
+                           
+                        }
+                        else
+                        {
+                            MessageBox.Show("Senha Incorreta");
+                            txt_senha.Text = "";
+                            
+                        }
                     }
                 }
+                if (teste)
+                    MessageBox.Show("Usuário não encontrado");
+
             }
-            if (teste)
-            MessageBox.Show("Usuário não encontrado");
-
-
+            else
+            {
+                MessageBox.Show("Você nem digitou um usuário ou senha\n\nAcha que sou palhaço? Aqui não nenem");
+            }
         }
 
         private void btn_cadastro_Click(object sender, EventArgs e)

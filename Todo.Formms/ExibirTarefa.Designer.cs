@@ -41,9 +41,10 @@
             // 
             // txt_nome
             // 
+            this.txt_nome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txt_nome.Location = new System.Drawing.Point(13, 13);
             this.txt_nome.Name = "txt_nome";
-            this.txt_nome.Size = new System.Drawing.Size(443, 31);
+            this.txt_nome.Size = new System.Drawing.Size(443, 39);
             this.txt_nome.TabIndex = 1;
             // 
             // date_data
@@ -131,6 +132,8 @@
             this.Controls.Add(this.date_data);
             this.Controls.Add(this.txt_nome);
             this.Name = "ExibirTarefa";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ExibirTarefa";
             this.Load += new System.EventHandler(this.ExibirTarefa_Load);
             this.ResumeLayout(false);

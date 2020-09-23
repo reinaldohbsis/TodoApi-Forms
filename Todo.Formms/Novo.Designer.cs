@@ -135,6 +135,7 @@
             this.Controls.Add(this.txt_descricao);
             this.Controls.Add(this.txt_nome);
             this.Name = "Novo";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Novo";
             this.ResumeLayout(false);

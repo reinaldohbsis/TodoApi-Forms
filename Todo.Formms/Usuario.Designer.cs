@@ -34,13 +34,16 @@
             this.btn_sair = new System.Windows.Forms.Button();
             this.btn_novo = new System.Windows.Forms.Button();
             this.lst_lista = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_abrir
             // 
             this.btn_abrir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btn_abrir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_abrir.Location = new System.Drawing.Point(12, 501);
+            this.btn_abrir.Location = new System.Drawing.Point(12, 521);
             this.btn_abrir.Name = "btn_abrir";
             this.btn_abrir.Size = new System.Drawing.Size(454, 41);
             this.btn_abrir.TabIndex = 1;
@@ -88,10 +91,44 @@
             // 
             this.lst_lista.FormattingEnabled = true;
             this.lst_lista.ItemHeight = 25;
-            this.lst_lista.Location = new System.Drawing.Point(12, 70);
+            this.lst_lista.Location = new System.Drawing.Point(12, 100);
             this.lst_lista.Name = "lst_lista";
             this.lst_lista.Size = new System.Drawing.Size(453, 404);
             this.lst_lista.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(13, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 29);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "ID";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label2.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(117, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 29);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Nome";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label3.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(401, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 29);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Status";
             // 
             // Usuario
             // 
@@ -99,16 +136,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(478, 744);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lst_lista);
             this.Controls.Add(this.btn_novo);
             this.Controls.Add(this.btn_sair);
             this.Controls.Add(this.btn_excluir);
             this.Controls.Add(this.btn_abrir);
             this.Name = "Usuario";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario";
             this.Load += new System.EventHandler(this.Usuario_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -118,5 +160,8 @@
         private System.Windows.Forms.Button btn_sair;
         private System.Windows.Forms.Button btn_novo;
         private System.Windows.Forms.ListBox lst_lista;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

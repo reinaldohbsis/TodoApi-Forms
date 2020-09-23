@@ -44,13 +44,16 @@ namespace Todo.Formms
         {
             int idselecionado = Convert.ToInt32(Selecionar());
             //txt_id.Text = Selecionar();
-            foreach (var item in _tarefa)
+            if (idselecionado != 0)
             {
-                if (item.Id.ToString() == idselecionado.ToString())
+                foreach (var item in _tarefa)
                 {
-                    var tarefa = _tarefa.Where(x => x.Id == item.Id).FirstOrDefault();
-                    this.Visible = false;
-                    new ExibirTarefa(tarefa).ShowDialog();
+                    if (item.Id.ToString() == idselecionado.ToString())
+                    {
+                        var tarefa = _tarefa.Where(x => x.Id == item.Id).FirstOrDefault();
+                        this.Visible = false;
+                        new ExibirTarefa(tarefa).ShowDialog();
+                    }
                 }
             }
                         
@@ -77,23 +80,33 @@ namespace Todo.Formms
             //{
             //    Id = idselecao
             //};
+            if (idselecao != 0)
+            {
+                var httpClient = new HttpClient();
+                var URL = "https://localhost:44336/api/TodoItems/" + idselecao;
+                var resultClient = httpClient.DeleteAsync(URL);
+                resultClient.Wait();
 
-            var httpClient = new HttpClient();
-            var URL = "https://localhost:44336/api/TodoItems/" + idselecao;
-            var resultClient = httpClient.DeleteAsync(URL);
-            resultClient.Wait();
+                var result = resultClient.Result.Content.ReadAsStringAsync();
+                result.Wait();
 
-            var result = resultClient.Result.Content.ReadAsStringAsync();
-            result.Wait();
-            
-            Get();
+                Get();
+            }
 
         }
 
         public string Selecionar()
         {
-            string selecao = lst_lista.SelectedItem.ToString().Substring(0, lst_lista.SelectedItem.ToString().IndexOf('|'));
-            return selecao;
+            try
+            {
+                string selecao = lst_lista.SelectedItem.ToString().Substring(0, lst_lista.SelectedItem.ToString().IndexOf(' '));
+                return selecao;
+            }
+            catch
+            {
+                MessageBox.Show("Não seja um animal!\nSelecione uma linha e depois clique em abrir\n\nNão tenho bola de cristal pra\nadivinhar o que você quer");
+                return "0";
+            }
         }
 
         public void Get()
@@ -114,7 +127,7 @@ namespace Todo.Formms
             {
                 _tarefa.Remove(item);
                 _tarefa.Add(item);
-                string txtt = String.Format("{0,-5} {1,-40} \t {2} \n",item.Id,item.Nome,item.Status);                
+                string txtt = String.Format("{0,-3} \t {1,-30} \t\t {2} \n",item.Id,item.Nome,item.Status);                
                lst_lista.Items.Add(txtt);
             }
 

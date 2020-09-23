@@ -145,6 +145,7 @@
             this.Controls.Add(this.txt_user);
             this.Controls.Add(this.txt_nome);
             this.Name = "CadastroPessoa";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastroPessoa";
             this.ResumeLayout(false);
