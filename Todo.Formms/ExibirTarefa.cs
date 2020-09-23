@@ -76,11 +76,12 @@ namespace Todo.Formms
         private void btn_atualizar_Click(object sender, EventArgs e)
         {
             
-            bool result = ValidadoresTarefa.ValidadorAtualizar(txt_nome.Text,txtbox_grande.Text,date_data.Value,_tarefa.IdPessoa,_tarefa.Id,cb_situacao.Text);
+            
             var dialog = MessageBox.Show("Deseja atualizar?", "Atualizar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
             if (dialog == DialogResult.Yes)
-            {              
+            {
+                bool result = ValidadoresTarefa.ValidadorAtualizar(txt_nome.Text, txtbox_grande.Text, date_data.Value, _tarefa.IdPessoa, _tarefa.Id, cb_situacao.Text);
                 if (result)
                 {
                     this.Visible = false;
