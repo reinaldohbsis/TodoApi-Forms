@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Todo.API.Models;
 using TodoApi.Regras;
@@ -25,31 +26,33 @@ namespace Todo.Formms
             
 
             var teste = getpessoas.Where(x => x.Usuario == txt_user.Text).FirstOrDefault();
-
-            //foreach (var item in getpessoas.Where(x => x.Usuario == txt_user.Text))
-            //{
-            //    pessoas.Add(item);
-            //}
+            bool tst = true;
 
             if (teste == null)
             {
 
                 if (txt_senha.Text == txt_senhaconf.Text)
                 {
-                    var pessoa = new Pessoa()
+                    tst = Regex.IsMatch(txt_senha.Text, @"[\d]{6,8}");
+                    if (tst)
                     {
-                        Nome = txt_nome.Text,
-                        Usuario = txt_user.Text,
-                        Senha = txt_senha.Text
-                    };
+                        var pessoa = new Pessoa()
+                        {
+                            Nome = txt_nome.Text,
+                            Usuario = txt_user.Text,
+                            Senha = txt_senha.Text
+                        };
 
-                    PessoasTarefas.CadastrarPessoa(pessoa);
+                        PessoasTarefas.CadastrarPessoa(pessoa);
 
 
-                    MessageBox.Show("Usuário cadastrado");
+                        MessageBox.Show("Usuário cadastrado");
 
-                    this.Visible = false;
-                    new Login().ShowDialog();
+                        this.Visible = false;
+                        new Login().ShowDialog();
+                    }
+                    else
+                        MessageBox.Show("Senha fora dos padrões \nApenas senhas númericas \ne de 6 a 8 caractéres");
                 }
                 else
                 {
