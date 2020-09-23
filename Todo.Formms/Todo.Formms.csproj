@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Todo.Models\Todo.Models.csproj" />
+    <ProjectReference Include="..\Validadores\Validadores.csproj" />
   </ItemGroup>
 
   <ItemGroup>

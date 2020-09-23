@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
 using Todo.API.Models;
+using Validadores;
 
 namespace Todo.Formms
 {
@@ -21,27 +22,18 @@ namespace Todo.Formms
         }
 
         private void btn_salvar_Click(object sender, EventArgs e)
-        {
-            var tarefa = new Tarefa()
+        {           
+            bool resultado = ValidadoresTarefa.ValidadorNovaTarefa(txt_nome.Text, _id, txt_descricao.Text, date_data.Value);
+            if (resultado)
             {
-                Nome = txt_nome.Text,
-                IdPessoa = _id,
-                Descricao = txt_descricao.Text,
-                Data = date_data.Value,
-                Status = false
-                
-            };
-
-            var content = JsonConvert.SerializeObject(tarefa);
-            var httpClient = new HttpClient();
-            var URL = "https://localhost:44336/api/TodoItems";
-            var resultClient = httpClient.PostAsync(URL, new StringContent(content, Encoding.UTF8, "application/json"));
-            resultClient.Wait();
-            var result = resultClient.Result.Content.ReadAsStringAsync();
-            result.Wait();
-
-            this.Visible = false;
-            new Usuario(_id).ShowDialog();
+                MessageBox.Show("Nova tarefa cadastrada");
+                this.Visible = false;
+                new Usuario(_id).ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Parece que tem algo faltando por ai");
+            }
         }
 
         private void btn_voltar_Click(object sender, EventArgs e)
