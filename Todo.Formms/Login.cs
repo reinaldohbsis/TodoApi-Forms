@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
 using Todo.API.Models;
+using Validadores;
 
 namespace Todo.Formms
 {
@@ -26,46 +27,26 @@ namespace Todo.Formms
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            user = new Atual();
-            user.User = txt_user.Text;
-            user.Senha = txt_user.Text;
             if (txt_user.Text != "" && txt_senha.Text != "")
             {
-                var httpClient = new HttpClient();
-                var URL = "https://localhost:44336/api/Pessoas";
-                var resultRequest = httpClient.GetAsync(URL);
-                resultRequest.Wait();
+                Pessoa user = ValidadoresPessoa.GetUser(txt_user.Text);
 
-                var result = resultRequest.Result.Content.ReadAsStringAsync();
-                result.Wait();
-
-                var data = JsonConvert.DeserializeObject<List<Pessoa>>(result.Result);
-                // var rep = new List<Atual>();
-                bool teste = true;
-                foreach (var log in data)
-                {
-                    if (log.Usuario == txt_user.Text)
-                    {
-                        teste = false;
-                        if (log.Senha == txt_senha.Text)
+                if(user != null) 
+                { 
+                        if (user.Senha == txt_senha.Text)
                         {
-
-
                             this.Visible = false;
-                            new Usuario(Convert.ToInt32(log.Id)).ShowDialog();
-                           
+                            new Usuario(Convert.ToInt32(user.Id)).ShowDialog();                        
                         }
                         else
                         {
                             MessageBox.Show("Senha Incorreta");
-                            txt_senha.Text = "";
-                            
+                            txt_senha.Text = "";       
                         }
-                    }
+                    
                 }
-                if (teste)
-                    MessageBox.Show("Usuário não encontrado");
-
+                else
+                MessageBox.Show("Usuário não encontrado");
             }
             else
             {
