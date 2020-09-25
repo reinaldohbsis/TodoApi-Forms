@@ -7,59 +7,41 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Todo.API.Models;
 
-namespace TodoApi.Controllers
+namespace Todo.API.Controllers
 {
-    [Route("api/Pessoas")]
+    [Route("api/User")]
     [ApiController]
-    public class PessoasController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly TodoContext _context;
 
-        public PessoasController(TodoContext context)
+        public UserController(TodoContext context)
         {
             _context = context;
         }
 
-        // GET: api/Pessoas
+        // GET: api/User
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Pessoa>>> GetPessoas()
         {
             return await _context.Pessoas.ToListAsync();
         }
 
-        // GET: api/Pessoas/5
+        // GET: api/User/5
         [HttpGet("{id}")]
-        public ActionResult GetPessoa(long id)
+        public async Task<ActionResult<Pessoa>> GetPessoa(long id)
         {
-            var pessoa = _context.Pessoas.Find(id);
+            var pessoa = await _context.Pessoas.FindAsync(id);
 
             if (pessoa == null)
             {
                 return NotFound();
             }
 
-            var tarefa = new List<Tarefa>();
-
-            foreach (var item in _context.TodoItems.Where(q => q.IdPessoa == pessoa.Id))
-                tarefa.Add(item);
-            
-            return Ok(tarefa);
+            return pessoa;
         }
 
-        // GET: api/Pessoas/Config/5
-        //[Route("api/Config")]
-        //[HttpGet("{id}")]
-        //public ActionResult GetPessoaConfigurar(long id)
-        //{
-        //    var pessoa = _context.Pessoas.Find(id);
-        //    if (pessoa == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Ok(pessoa);
-        //}
-
-        // PUT: api/Pessoas/5
+        // PUT: api/User/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
@@ -69,7 +51,7 @@ namespace TodoApi.Controllers
             {
                 return BadRequest();
             }
-            
+
             _context.Entry(pessoa).State = EntityState.Modified;
 
             try
@@ -91,7 +73,7 @@ namespace TodoApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Pessoas
+        // POST: api/User
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
@@ -103,7 +85,7 @@ namespace TodoApi.Controllers
             return CreatedAtAction("GetPessoa", new { id = pessoa.Id }, pessoa);
         }
 
-        // DELETE: api/Pessoas/5
+        // DELETE: api/User/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Pessoa>> DeletePessoa(long id)
         {

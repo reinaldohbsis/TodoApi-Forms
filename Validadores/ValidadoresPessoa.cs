@@ -31,17 +31,17 @@ namespace Validadores
         public static Pessoa GetUserConfig(long id)
         {
             var httpClient = new HttpClient();
-            string URL = "https://localhost:44336/api/Pessoas/Config/" + id;
+            string URL = "https://localhost:44336/api/User/" + id;
             var resultRequest = httpClient.GetAsync(URL);
             resultRequest.Wait();
 
             var result = resultRequest.Result.Content.ReadAsStringAsync();
             result.Wait();
 
-            var data = JsonConvert.DeserializeObject<List<Pessoa>>(result.Result);
-            var pessoa = data.Where(x => x.Id == id).FirstOrDefault();
+            var data = JsonConvert.DeserializeObject<Pessoa>(result.Result);
+           
 
-            return pessoa;
+            return data;
         }
 
         public static bool PutUserConfig(string nome, string senha, string user, long id, string senhaantiga, string confirma)
