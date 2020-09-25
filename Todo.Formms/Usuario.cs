@@ -16,7 +16,7 @@ namespace Todo.Formms
     public partial class Usuario : Form
     {
         public int _id;
-        public List<Tarefa> _tarefa;
+        public List<Tarefa> _tarefa; 
         public Usuario(int id)
         {
             _id = id;
@@ -128,6 +128,12 @@ namespace Todo.Formms
                lst_lista.Items.Add(txtt);
             }
 
+        }
+
+        private void btn_configurar_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            new Configurar(_id).ShowDialog();
         }
     }
 }

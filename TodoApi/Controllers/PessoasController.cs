@@ -46,6 +46,19 @@ namespace TodoApi.Controllers
             return Ok(tarefa);
         }
 
+        // GET: api/Pessoas/Config/5
+        // [Route("api/Pessoas/Config")]
+        //[HttpGet("{id}")]
+        //public ActionResult GetPessoaConfigurar(long id)
+        //{
+        //    var pessoa = _context.Pessoas.Find(id);
+        //    if (pessoa == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(pessoa); 
+        //}
+
         // PUT: api/Pessoas/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -56,7 +69,7 @@ namespace TodoApi.Controllers
             {
                 return BadRequest();
             }
-
+            
             _context.Entry(pessoa).State = EntityState.Modified;
 
             try

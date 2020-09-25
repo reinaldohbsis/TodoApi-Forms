@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btn_configurar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_abrir
@@ -45,7 +46,7 @@
             this.btn_abrir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_abrir.Location = new System.Drawing.Point(12, 521);
             this.btn_abrir.Name = "btn_abrir";
-            this.btn_abrir.Size = new System.Drawing.Size(454, 41);
+            this.btn_abrir.Size = new System.Drawing.Size(229, 41);
             this.btn_abrir.TabIndex = 1;
             this.btn_abrir.Text = "Abrir";
             this.btn_abrir.UseVisualStyleBackColor = false;
@@ -55,7 +56,7 @@
             // 
             this.btn_excluir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btn_excluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_excluir.Location = new System.Drawing.Point(13, 622);
+            this.btn_excluir.Location = new System.Drawing.Point(12, 644);
             this.btn_excluir.Name = "btn_excluir";
             this.btn_excluir.Size = new System.Drawing.Size(453, 41);
             this.btn_excluir.TabIndex = 1;
@@ -79,9 +80,9 @@
             // 
             this.btn_novo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btn_novo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_novo.Location = new System.Drawing.Point(13, 9);
+            this.btn_novo.Location = new System.Drawing.Point(247, 521);
             this.btn_novo.Name = "btn_novo";
-            this.btn_novo.Size = new System.Drawing.Size(453, 41);
+            this.btn_novo.Size = new System.Drawing.Size(218, 41);
             this.btn_novo.TabIndex = 1;
             this.btn_novo.Text = "Novo";
             this.btn_novo.UseVisualStyleBackColor = false;
@@ -130,12 +131,27 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Status";
             // 
+            // btn_configurar
+            // 
+            this.btn_configurar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_configurar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_configurar.BackgroundImage")));
+            this.btn_configurar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_configurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_configurar.Location = new System.Drawing.Point(401, 20);
+            this.btn_configurar.Name = "btn_configurar";
+            this.btn_configurar.Size = new System.Drawing.Size(63, 32);
+            this.btn_configurar.TabIndex = 6;
+            this.btn_configurar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_configurar.UseVisualStyleBackColor = false;
+            this.btn_configurar.Click += new System.EventHandler(this.btn_configurar_Click);
+            // 
             // Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(478, 744);
+            this.Controls.Add(this.btn_configurar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -163,5 +179,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btn_configurar;
     }
 }
