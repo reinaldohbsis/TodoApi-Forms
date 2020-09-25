@@ -51,9 +51,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Bahnschrift", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(50, 401);
+            this.label1.Location = new System.Drawing.Point(21, 401);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 23);
+            this.label1.Size = new System.Drawing.Size(90, 34);
             this.label1.TabIndex = 0;
             this.label1.Text = "USER:";
             // 
@@ -70,9 +70,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Bahnschrift", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(50, 450);
+            this.label2.Location = new System.Drawing.Point(13, 439);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 23);
+            this.label2.Size = new System.Drawing.Size(98, 34);
             this.label2.TabIndex = 0;
             this.label2.Text = "NOME:";
             // 
@@ -84,7 +84,7 @@
             this.lbl_user.ForeColor = System.Drawing.Color.White;
             this.lbl_user.Location = new System.Drawing.Point(117, 401);
             this.lbl_user.Name = "lbl_user";
-            this.lbl_user.Size = new System.Drawing.Size(61, 23);
+            this.lbl_user.Size = new System.Drawing.Size(90, 34);
             this.lbl_user.TabIndex = 0;
             this.lbl_user.Text = "USER:";
             // 
@@ -95,7 +95,7 @@
             this.label3.Font = new System.Drawing.Font("Bahnschrift", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(12, 476);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(466, 23);
+            this.label3.Size = new System.Drawing.Size(699, 34);
             this.label3.TabIndex = 0;
             this.label3.Text = "_________________________________________________________";
             // 
@@ -112,9 +112,9 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Bahnschrift", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(42, 552);
+            this.label4.Location = new System.Drawing.Point(13, 541);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 23);
+            this.label4.Size = new System.Drawing.Size(102, 34);
             this.label4.TabIndex = 0;
             this.label4.Text = "ATUAL:";
             // 
@@ -124,9 +124,9 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Bahnschrift", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(117, 509);
+            this.label5.Location = new System.Drawing.Point(117, 510);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(154, 23);
+            this.label5.Size = new System.Drawing.Size(231, 34);
             this.label5.TabIndex = 0;
             this.label5.Text = "ALTERAR SENHA";
             // 
@@ -136,9 +136,9 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Bahnschrift", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(50, 608);
+            this.label6.Location = new System.Drawing.Point(23, 597);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 23);
+            this.label6.Size = new System.Drawing.Size(92, 34);
             this.label6.TabIndex = 0;
             this.label6.Text = "NOVA:";
             // 
@@ -162,9 +162,9 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Bahnschrift", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(50, 657);
+            this.label7.Location = new System.Drawing.Point(23, 649);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 23);
+            this.label7.Size = new System.Drawing.Size(90, 34);
             this.label7.TabIndex = 0;
             this.label7.Text = "CONF:";
             // 
@@ -190,6 +190,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Voltar";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Configurar
             // 
@@ -198,7 +199,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(484, 761);
+            this.ClientSize = new System.Drawing.Size(496, 795);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
@@ -215,6 +216,7 @@
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Name = "Configurar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurar";
             this.Load += new System.EventHandler(this.Configurar_Load);
             this.ResumeLayout(false);

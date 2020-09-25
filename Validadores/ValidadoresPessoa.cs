@@ -44,20 +44,44 @@ namespace Validadores
             return data;
         }
 
-        public static bool PutUserConfig(string nome, string senha, string user, long id, string senhaantiga, string confirma)
+        public static bool PutUserConfig(string nome, string senha, string user, long id, string senhaantiga, string confirma, string senhacorreta)
         {
-            if (nome == "" || senha == "")
+            if (nome == "" || senhaantiga == "")
             {
                 throw new EspaçoEmBrancoException();
             }
 
-            var pessoa = new Pessoa()
+            if (senhaantiga != senhacorreta)
             {
-                Nome = nome,
-                Senha = senha,
-                Usuario = user,
-                Id = id
-            };
+                throw new SenhaErradaException();
+            }
+
+            if (senha != confirma)
+            {
+                throw new SenhaNaoBateException();
+            }
+            var pessoa = new Pessoa();
+            if (senha != "")
+            {
+                pessoa = new Pessoa()
+                {
+                    Nome = nome,
+                    Senha = senha,
+                    Usuario = user,
+                    Id = id
+                };
+            }
+
+            else
+            {
+               pessoa = new Pessoa()
+                {
+                    Nome = nome,
+                    Senha = senhacorreta,
+                    Usuario = user,
+                    Id = id
+                };
+            }
 
             var content = JsonConvert.SerializeObject(pessoa);
             var httpClient = new HttpClient();

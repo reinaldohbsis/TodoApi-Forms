@@ -34,7 +34,9 @@ namespace Todo.Formms
             {
                 try
                 {
-                    var result = Validadores.ValidadoresPessoa.PutUserConfig(txt_Nome.Text, txt_senhanova.Text, lbl_user.Text, _pessoa.Id, txt_senha.Text, txt_confirma.Text);
+                    var result = Validadores.ValidadoresPessoa.PutUserConfig(txt_Nome.Text, txt_senhanova.Text, lbl_user.Text, _pessoa.Id, txt_senha.Text, txt_confirma.Text, _pessoa.Senha);
+                    this.Visible = false;
+                    new Usuario(Convert.ToInt32(_pessoa.Id)).ShowDialog();
                 }
                 catch(SenhaErradaException ex )
                 {
@@ -46,9 +48,15 @@ namespace Todo.Formms
                 }
                 catch (EspaçoEmBrancoException)
                 {
-                    
+                    MessageBox.Show("Espaço em branco detectado");
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            new Usuario(Convert.ToInt32(_pessoa.Id)).ShowDialog();
         }
     }
 }
