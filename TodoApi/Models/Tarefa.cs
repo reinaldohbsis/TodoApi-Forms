@@ -19,6 +19,10 @@ namespace Todo.API.Models
 
         public long IdPessoa { get; set; }
 
+        public long IdTime { get; set; }
+
+        public virtual Time Times { get; set; }
+
         public virtual Pessoa Pessoas { get; set; }
 
 

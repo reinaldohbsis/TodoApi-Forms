@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Todo.API.Models;
 
-namespace TodoApi.Migrations
+namespace Todo.API.Migrations
 {
     [DbContext(typeof(TodoContext))]
-    [Migration("20200921020418_InitialCreate")]
+    [Migration("20200930182738_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,12 +21,18 @@ namespace TodoApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("TodoApi.Models.Pessoa", b =>
+            modelBuilder.Entity("Todo.API.Models.Pessoa", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("IdTime")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("NivelTime")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -38,6 +44,9 @@ namespace TodoApi.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
+                    b.Property<long?>("TimeId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Usuario")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)")
@@ -45,10 +54,14 @@ namespace TodoApi.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdTime");
+
+                    b.HasIndex("TimeId");
+
                     b.ToTable("Pessoas");
                 });
 
-            modelBuilder.Entity("TodoApi.Models.Tarefa", b =>
+            modelBuilder.Entity("Todo.API.Models.Tarefa", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -66,6 +79,9 @@ namespace TodoApi.Migrations
                     b.Property<long>("IdPessoa")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("IdTime")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(30)")
@@ -77,26 +93,65 @@ namespace TodoApi.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
+                    b.Property<long?>("TimesId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IdPessoa");
 
                     b.HasIndex("PessoaId");
 
+                    b.HasIndex("TimesId");
+
                     b.ToTable("TodoItems");
                 });
 
-            modelBuilder.Entity("TodoApi.Models.Tarefa", b =>
+            modelBuilder.Entity("Todo.API.Models.Time", b =>
                 {
-                    b.HasOne("TodoApi.Models.Pessoa", "Pessoas")
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Times");
+                });
+
+            modelBuilder.Entity("Todo.API.Models.Pessoa", b =>
+                {
+                    b.HasOne("Todo.API.Models.Time", "Times")
+                        .WithMany()
+                        .HasForeignKey("IdTime")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Todo.API.Models.Time", null)
+                        .WithMany("Pessoas")
+                        .HasForeignKey("TimeId");
+                });
+
+            modelBuilder.Entity("Todo.API.Models.Tarefa", b =>
+                {
+                    b.HasOne("Todo.API.Models.Pessoa", "Pessoas")
                         .WithMany()
                         .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TodoApi.Models.Pessoa", null)
+                    b.HasOne("Todo.API.Models.Pessoa", null)
                         .WithMany("Tarefas")
                         .HasForeignKey("PessoaId");
+
+                    b.HasOne("Todo.API.Models.Time", "Times")
+                        .WithMany("Tarefas")
+                        .HasForeignKey("TimesId");
                 });
 #pragma warning restore 612, 618
         }

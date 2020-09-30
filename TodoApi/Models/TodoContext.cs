@@ -22,6 +22,7 @@ namespace Todo.API.Models
 
         public DbSet<Tarefa> TodoItems { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
+        public DbSet<Time> Times { get; set; }
 
     }
 }

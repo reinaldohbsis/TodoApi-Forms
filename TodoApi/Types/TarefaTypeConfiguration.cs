@@ -18,7 +18,8 @@ namespace Todo.API.Types
             builder.Property(q => q.Descricao).IsRequired().HasMaxLength(500);
             builder.Property(q => q.Data);
             builder.HasOne(q => q.Pessoas).WithMany().HasForeignKey(q => q.IdPessoa);
-
+            //builder.HasOne(q => q.Times).WithMany().HasForeignKey(q => q.IdTime);
+            
         }
     }
 }

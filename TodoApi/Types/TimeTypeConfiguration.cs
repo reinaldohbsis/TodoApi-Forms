@@ -8,15 +8,12 @@ using Todo.API.Models;
 
 namespace Todo.API.Types
 {
-    public class PessoaTypeConfiguration : IEntityTypeConfiguration<Pessoa>
+    public class TimeTypeConfiguration : IEntityTypeConfiguration<Time>
     {
-        public void Configure(EntityTypeBuilder<Pessoa> builder)
+       public void Configure(EntityTypeBuilder<Time> builder)
         {
             builder.HasKey(q => q.Id);
             builder.Property(q => q.Nome).IsRequired().HasMaxLength(60);
-            builder.Property(q => q.Usuario).IsRequired().HasMaxLength(20);
-            builder.Property(q => q.Senha).IsRequired().HasMaxLength(20);
-            builder.HasOne(q => q.Times).WithMany().HasForeignKey(q => q.IdTime);
         }
     }
 }
