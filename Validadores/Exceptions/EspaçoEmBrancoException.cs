@@ -7,7 +7,7 @@ namespace Validadores.Exceptions
 {
     public class EspaçoEmBrancoException : Exception
     {
-        public EspaçoEmBrancoException()
+        public EspaçoEmBrancoException() : this("Espaço em branco detectado")
         {
             
         }
@@ -24,5 +24,7 @@ namespace Validadores.Exceptions
         protected EspaçoEmBrancoException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
+
+        
     }
 }

@@ -46,7 +46,7 @@ namespace Todo.Formms
                     
                 }
                 else
-                MessageBox.Show("Usuário não encontrado");
+                MessageBox.Show("ESTE UZUARIO NON ECZISTE");
             }
             else
             {

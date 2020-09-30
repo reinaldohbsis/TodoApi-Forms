@@ -42,13 +42,13 @@ namespace Todo.Formms
                 {
                     MessageBox.Show(ex.Message);
                 }
-                catch (SenhaNaoBateException)
+                catch (SenhaNaoBateException ex)
                 {
-                    MessageBox.Show("Senhas não conferem");
+                    MessageBox.Show(ex.Message);
                 }
-                catch (EspaçoEmBrancoException)
+                catch (EspaçoEmBrancoException ex)
                 {
-                    MessageBox.Show("Espaço em branco detectado");
+                    MessageBox.Show(ex.Message);
                 }
             }
         }

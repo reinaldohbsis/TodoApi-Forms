@@ -7,7 +7,7 @@ namespace Validadores.Exceptions
 {
     public class SenhaNaoBateException : Exception
     {
-        public SenhaNaoBateException()
+        public SenhaNaoBateException() : this("Senhas não conferem")
         {
         }
 
